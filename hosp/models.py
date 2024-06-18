@@ -17,7 +17,7 @@ class Patient(models.Model):
 
 
 class PatientUpdate(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE ,default = 1)
     name = models.CharField(max_length = 50,null=True,blank = True )
     age = models.IntegerField()
     gender = models.CharField(max_length=10)
@@ -41,8 +41,11 @@ class TreatmentPlan(models.Model):
     
 
 class Doctor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    specialty = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,default=1)
+    first_name = models.CharField(max_length = 50,null=True,blank = True )
+    last_name = models.CharField(max_length = 50,null=True,blank = True )
+    specialization = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15, default=1)
     availability = models.TextField()  # e.g., "Mon-Fri: 9am-5pm"
     
     def __str__(self):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Patient
-from .forms import PatientForm
+from .models import Patient, Doctor
+from .forms import PatientForm, DoctorForm
 
 
 
@@ -28,3 +28,32 @@ def patient_list(request):
 def patient_detail(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
     return render(request, 'patient_detail.html', {'patient': patient})
+
+def doctor_create(request):
+    if request.method == "POST":
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('doctor_list') 
+    else:
+        form = DoctorForm()
+    return render(request, 'doctor_create.html', {'form': form})
+
+def doctor_list(request):
+    doctors = Doctor.objects.all()
+    return render(request, 'doctor_list.html', {'doctors': doctors})
+
+
+def doctor_create(request):
+    if request.method == "POST":
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('doctor_list') 
+    else:
+        form = DoctorForm()
+    return render(request, 'doctor_create.html', {'form': form})
+
+def doctor_detail(request, pk):
+    doctor = get_object_or_404(Doctor, pk=pk)
+    return render(request, 'doctor_detail.html', {'doctor': doctor})

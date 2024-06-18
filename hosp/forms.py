@@ -19,7 +19,7 @@ class TreatmentPlanForm(forms.ModelForm):
 class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = '__all__'
+        fields = ['first_name', 'last_name', 'specialization', 'phone']
 
 class AppointmentForm(forms.ModelForm):
     class Meta:

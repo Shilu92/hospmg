@@ -8,7 +8,9 @@ urlpatterns = [
     path('patients/new/', views.patient_create, name='patient_create'),
     path('patients/<int:pk>/', views.patient_detail, name='patient_detail'),
     path('patients/', views.patient_list, name='patient_list'),
-   
+    path('doctors/new/', views.doctor_create, name='doctor_create'),
+    path('doctors/<int:pk>/', views.doctor_detail, name='doctor_detail'),
+    path('doctors/', views.doctor_list, name='doctor_list'),
 ]
 
 if settings.DEBUG:
